@@ -5,14 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Shopping list</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="css/layout.css" />
     <script type="text/javascript" src="scripts/showPic.js"></script>
 </head>
 <body>
     <h1>Snapshots</h1>
-    <ol>
+    <ol id="imageGallery">
         <li>
-            <a href="images/a.jpg" onclick="showPic(this); " title="a fireworks display">fireworks</a>
+            <a href="images/a.jpg" title="a fireworks display">fireworks</a>
         </li>
         <li>
             <a href="images/b.jpg" title="a cup of black coffee">coffee</a>
@@ -25,5 +25,7 @@
         </li>
     </ol>
     <img id="placeholder" src="images/e.jpg" alt="my image galley">
+    <p id="description">Choose a image</p>
+    <a href="http://www.baidu.com" class="popup">example</a>
 </body>
 </html>
