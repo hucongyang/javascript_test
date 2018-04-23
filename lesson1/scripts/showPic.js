@@ -46,10 +46,10 @@ function showPic(whichpic) {
 
 // window.onload = prepareGallery;
 
-addOldEvent(prepareGallery);
-addOldEvent(prepareLink);
+addLoadEvent(prepareGallery);
+addLoadEvent(prepareLink);
 
-function addOldEvent(fun) {
+function addLoadEvent(fun) {
     var oldonLoad = window.onload;
     if (typeof window.onload != 'function') {
         window.onload = fun;
