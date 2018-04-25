@@ -1,1 +1,8 @@
+<<<<<<< HEAD
+=======
+.idea
+*/.idea
+.DS_Store
+.idea/*
+>>>>>>> babafb11ff6d25ba04de8d83feb78a7f7f525566
 .idea/workspace.xml
