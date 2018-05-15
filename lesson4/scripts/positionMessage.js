@@ -9,6 +9,7 @@ function positionMessage() {
     elem.style.top = "100px";
     moveElement("message", 125, 25, 20);
 
+    if ( !document.getElementById('message2')) return false;
     var elem2 = document.getElementById('message2');
     elem2.style.position = "absolute";
     elem2.style.left = "50px";
