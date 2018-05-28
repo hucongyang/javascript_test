@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.colors = "reds";
+        var o = {colors: "blue"};
+
+        function getColor() {
+            return this.colors;
+        }
+        console.log(getColor());
+
+        o.getColors = getColor;
+        console.log(o);
+        console.log(o.getColors());
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

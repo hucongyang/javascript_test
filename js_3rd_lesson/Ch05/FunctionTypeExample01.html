@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        function sum(num1, num2) {
+            console.log(arguments);
+            console.log(arguments.callee.name);
+            console.log(arguments.callee.caller);
+            return num1 + num2;
+        }
+        alert(sum(10, 20));
+
+        var anotherSum = sum;
+        alert(anotherSum(20, 30));
+
+        var sum = null;
+        alert(anotherSum(20, 30));
+
+        function outer() {
+            return anotherSum(1, 2);
+        }
+
+        outer();
+    </script>
+</head>
+<body>
+
+</body>
+</html>
