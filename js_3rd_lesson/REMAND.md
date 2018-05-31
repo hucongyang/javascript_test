@@ -80,6 +80,78 @@ protoType   是保存函数所有实例方法的所在
 
    
 
+6 面向对象的程序设计
+6.2 创建对象
+6.2.1 工厂模式 抽象了创建具体对象的过程
+eg:
+function createPerson(name, age, job) {
+    var o = new Object();
+    o.name = name;
+    o.age = age;
+    o.job = job;
+    o.sayName = function() {
+        alert(this.name);
+    }
+    return o;
+}
+
+var person1 = createPerson("Bob", 29, "Teacher");
+var person2 = createPerson("Greg", 30, "Doctor");
+
+6.2.2 构造函数模式
+eg:
+function Person(name, age, job) {
+    this.name = name;
+    this.age = age;
+    this.job = job;
+    this.sayName = function() {
+        alert(this.name);
+    }
+}
+
+var person1 = Person("Bob", 29, "Teacher");
+var person2 = Person("Greg", 30, "Doctor");
+
+6.2.3 原型模式
+
+
+
+7. 函数表达式
+匿名函数：创建一个函数并将它赋值给变量functionName,
+eg:
+var functionName = function(arg0, arg1, arg2) {
+    // 函数体
+}
+
+7.1 递归
+var factorial = function f(num) {
+    if (num <= 1) {
+        return 1;
+    } else {
+        return num * f(num -1);
+    }
+}
+
+7.2 闭包
+指有权访问另一个函数作用域内变量的函数
+创建闭包的创建方式：在一个函数内部创建另一个函数
+
+
+8. BOM
+浏览器对象模型
+
+8.1 系统对话框
+alert()     confirm()   prompt()
+
+8.2 location对象
+
+8.3 navigator对象
+
+8.4 screen对象
+
+8.5 history对象
+
+
 
 
 

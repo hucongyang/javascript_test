@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        var factorial = (function f(num) {
+            if (num <= 1) {
+                return 1;
+            } else {
+                return num * f(num - 1)
+            }
+        })(4);
+        console.log(factorial);
+
+        (function () {
+            var now = new Date();
+            console.log(now.getMonth());
+            console.log(now.getDate());
+            if (now.getMonth() == 4 && now.getDate() == 31) {
+                console.log("happy js");
+            }
+        })();
+    </script>
+</head>
+<body>
+
+</body>
+</html>

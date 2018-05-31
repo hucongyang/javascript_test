@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        function SpecialArray() {
+            var values = new Array();
+            values.push.apply(values, arguments);
+            values.toPipedString = function () {
+                return this.join("|");
+            };
+            return values;
+        }
+
+        var colors = new SpecialArray("red", "yellow", "green");
+        console.log(colors);
+        console.log(colors.toPipedString());
+    </script>
+</head>
+<body>
+
+</body>
+</html>

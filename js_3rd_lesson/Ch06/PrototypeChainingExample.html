@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        function SuperType() {
+            this.property = true;
+        }
+        SuperType.prototype.getSuperValue = function () {
+            return this.property;
+        };
+
+        function SubType() {
+            this.subproperty = false;
+        }
+
+        SubType.prototype.getSubValue = function () {
+            return this.subproperty;
+        };
+
+        SubType.prototype = new SuperType();
+        var instance = new SubType();
+        console.log(instance.getSuperValue());
+        console.log(instance);
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

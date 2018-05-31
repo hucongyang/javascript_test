@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript">
+        function print1() {
+            window.print();
+        }
+
+        function location1() {
+            var location = window.location;
+            var qs = location.search.length ? location.search.substring(1) : '';
+
+            var args = [];
+            var key = '';
+            var value = '';
+            var items = qs.split('&');
+            var item = [];
+
+            for (var i = 0; i < items.length; i++) {
+                item = items[i].split('=');
+                key = decodeURIComponent(item[0]);
+                value = decodeURIComponent(item[1]);
+                if (key.length) {
+                    args[key] = value;
+                }
+            }
+            console.log(args);
+        }
+        
+        function navigator1() {
+            var navigator1 = window.navigator;
+            console.log(navigator1);
+        }
+
+        function history1() {
+            var history1 = window.history;
+            console.log(history1);
+        }
+    </script>
+</head>
+<body>
+    <div>ddd</div>
+    <button onclick="print1()" id="button1">打印</button>
+    <button onclick="location1()" id="location">location</button>
+    <button onclick="navigator1()" id="navigator">navigator</button>
+    <button onclick="history1()" id="history">history1</button>
+</body>
+</html>

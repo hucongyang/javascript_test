@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        var data = [
+            {
+                "name": "Bob",
+                "age": 32
+            },
+            {
+                "name": "Tea",
+                "age": 29
+            }
+        ];
+
+        var h = data.sort(compare("age"));
+        console.log(h);
+
+        function compare(property) {
+            return function (object1, object2) {
+                var value1 = object1[property];
+                var value2 = object2[property];
+                if (value1 > value2) {
+                    return 1;
+                } else if (value1 < value2) {
+                    return -1;
+                } else {
+                    return 0;
+                }
+            }
+        }
+
+        var factorial = function f(num) {
+            if (num <= 1) {
+                return 1;
+            } else {
+                return num * f(num - 1);
+            }
+        };
+
+        console.log(factorial(3));
+
+        var fum = factorial;
+        factorial = null;
+        console.log(fum(4));
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
