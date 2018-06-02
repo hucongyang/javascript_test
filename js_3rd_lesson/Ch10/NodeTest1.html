@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        function node() {
+            if (!document.getElementById) return false;
+
+            var message = document.getElementById('list1');
+            console.log(message.nextSibling);
+        }
+
+        window.onload = node;
+    </script>
+</head>
+<body>
+    <div id="message">
+        <ol id="list1">
+            <span id="span1" class="class1">text1</span>
+            <span id="span2" class="class2">text2</span>
+            <span id="span3" class="class3">text3</span>
+        </ol>
+        <ol id="list2">
+            <span id="list2-span1" class="class1">list2-span1</span>
+        </ol>
+    </div>
+</body>
+</html>

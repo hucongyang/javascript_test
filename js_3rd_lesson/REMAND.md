@@ -152,6 +152,16 @@ alert()     confirm()   prompt()
 8.5 history对象
 
 
+10. DOM
+10.1 节点层次       元素节点    属性节点    文本节点
+10.1.1 Node类型
+someNode.nodeType = 1   元素节点
+someNode.nodeType = 2   属性节点
+someNode.nodeType = 3   文本节点
+
+nodeType    节点类型
+nodeName    节点名称
+nodeValue   节点值
 
 
 
