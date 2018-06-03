@@ -10,7 +10,7 @@ toLocalString   toString    valueOf
 array.push()        push()方法可以接收任意数量的参数，把它们逐个添加到数组末尾，并返回修改后数组的长
 array.pop()         而pop()方法则从数组末尾移除最后一项，减少数组的 length 值，然后返回移除的项
 
-1.4 实现队列: 先进先出的数据结构   
+1.4 实现队列: 先进先出的数据结构
 array.push()        push()是向数组末端添加项的方法
 array.shift()       移除数组中的第一个项并返回该项，同时将数组长度减 1
 array.unshift()     从数组前端添加元素
@@ -158,10 +158,27 @@ alert()     confirm()   prompt()
 someNode.nodeType = 1   元素节点
 someNode.nodeType = 2   属性节点
 someNode.nodeType = 3   文本节点
-
-nodeType    节点类型
-nodeName    节点名称
-nodeValue   节点值
+    1. nodeName属性 和 nodeValue属性
+       nodeType    节点类型
+       nodeName    节点名称
+       nodeValue   节点值
+    2. 节点关系
+       父节点      someNode.parentNode
+       父节点的第一个节点    someNode.firstNode
+       父节点的最后一个节点  someNode.lastNode
+       子节点      someNode.childNodes
+       上一个节点   previousSibling
+       下一个节点   nextSibling
+       hasClildNodes()
+       整个文档的文档节点    someNode.ownerDocument
+    3. 操作节点
+       向chlidNodes列表的末尾添加一个节点         someNode.appendChild(newNode)
+       向childNodes列表中某个固定位置前添加节点    someNode.insertBefore(newNode, targetNode)
+       替换节点         someNode.replaceChild(newNode, targetNode)
+       删除节点         someNode.removeChild(targetNode)
+    4. 其他方法
+       复制节点  cloneNode(true或false)    true: 深复制 复制节点及其整个子节点树  false: 浅复制 复制节点本身
+       处理文本节点  normalize()
 
 
 

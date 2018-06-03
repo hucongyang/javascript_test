@@ -6,9 +6,12 @@
     <script>
         function node() {
             if (!document.getElementById) return false;
-
-            var message = document.getElementById('list1');
-            console.log(message.nextSibling);
+            var list2 = document.getElementById("list2-span1");
+            console.log(list2.getAttribute("id"));
+            console.log(list2.getAttribute("class"));
+            console.log(list2.getAttribute("data-time"));
+            list2.setAttribute("data-time", "yesterday");
+            console.log(list2.getAttribute("data-time"));
         }
 
         window.onload = node;
@@ -22,7 +25,7 @@
             <span id="span3" class="class3">text3</span>
         </ol>
         <ol id="list2">
-            <span id="list2-span1" class="class1">list2-span1</span>
+            <span id="list2-span1" class="class1" data-time="today">list2-span1</span>
         </ol>
     </div>
 </body>
