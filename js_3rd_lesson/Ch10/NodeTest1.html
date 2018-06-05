@@ -4,29 +4,52 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <script>
-        function node() {
-            if (!document.getElementById) return false;
-            var list2 = document.getElementById("list2-span1");
-            console.log(list2.getAttribute("id"));
-            console.log(list2.getAttribute("class"));
-            console.log(list2.getAttribute("data-time"));
-            list2.setAttribute("data-time", "yesterday");
-            console.log(list2.getAttribute("data-time"));
+        function addList() {
+            if (!document.getElementById('ul')) return false;
+            var li1 = document.createElement('li');
+            var test1 = document.createTextNode('item');
+            li1.appendChild(test1);
+
+            var list = document.getElementById('ul');
+            list.appendChild(li1);
         }
 
-        window.onload = node;
+        function deleteList() {
+            if (!document.getElementById('ul')) return false;
+            var list = document.getElementById('ul');
+            var lastChild = list.lastChild;
+            list.removeChild(lastChild);
+        }
+
+        function myDiv() {
+            var myDiv = document.getElementById('myDiv');
+
+            console.log(myDiv.innerHTML);
+        }
+
+        window.onload = myDiv;
     </script>
 </head>
 <body>
-    <div id="message">
-        <ol id="list1">
-            <span id="span1" class="class1">text1</span>
-            <span id="span2" class="class2">text2</span>
-            <span id="span3" class="class3">text3</span>
-        </ol>
-        <ol id="list2">
-            <span id="list2-span1" class="class1" data-time="today">list2-span1</span>
-        </ol>
+    <div id="message" class="bd user disabled">
+        <ul id="ul" class="list">
+            <li>item1</li>
+            <li>item2</li>
+            <li>item3</li>
+        </ul>
+
+        <div id="myDiv" data-appId="12345" data-myName="Bob" class="myClass">
+            <p>This is a <strong>paragraph</strong> with a list following it.</p>
+            <ul>
+                <li>Item 1</li>
+                <li>Item 2</li>
+                <li>Item 3</li>
+            </ul>
+        </div>
+
+        <button id="add" onclick="addList()">add</button>
+        <button id="delete" onclick="deleteList()">delete</button>
+        <button id="focus" onclick="focus()">focus</button>
     </div>
 </body>
 </html>
