@@ -26,6 +26,16 @@
 
             console.log(myDiv.innerHTML);
         }
+        function node() {
+            if (!document.getElementById) return false;
+            var myList = document.getElementById("myList");
+            for (var i = 0; i< myList.childNodes.length; i++) {
+                if (myList.childNodes[i].nodeType == 1) {
+                    console.log(myList.childNodes[i].firstChild.nodeValue);
+                }
+            }
+
+        }
 
         window.onload = myDiv;
     </script>
@@ -50,6 +60,13 @@
         <button id="add" onclick="addList()">add</button>
         <button id="delete" onclick="deleteList()">delete</button>
         <button id="focus" onclick="focus()">focus</button>
+
+    <div id="message1">
+        <ul id="myList">
+            <li>items1</li>
+            <li>items2</li>
+            <li>items3</li>
+        </ul>
     </div>
 </body>
 </html>
