@@ -37,6 +37,11 @@
 
         }
 
+        function clickFocus() {
+            var input = document.getElementById("name");
+            input.focus();
+        }
+
         window.onload = myDiv;
     </script>
 </head>
@@ -56,17 +61,10 @@
                 <li>Item 3</li>
             </ul>
         </div>
-
+        <input type="text" value="click me" id="name">
         <button id="add" onclick="addList()">add</button>
         <button id="delete" onclick="deleteList()">delete</button>
-        <button id="focus" onclick="focus()">focus</button>
-
-    <div id="message1">
-        <ul id="myList">
-            <li>items1</li>
-            <li>items2</li>
-            <li>items3</li>
-        </ul>
+        <button id="focus" onclick="clickFocus()">focus</button>
     </div>
 </body>
 </html>
