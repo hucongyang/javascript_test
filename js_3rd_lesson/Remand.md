@@ -190,6 +190,41 @@ someNode.nodeType = 3   文本节点
 
 13. 事件
 13.1 事件流
+
 13.1.1 事件冒泡(IE) 即事件开始时由最具体的元素(文档中嵌套层次最深的那个节点)接受，然后逐级向上传播到较为不具体的节点(文档)
-13
+
+13.2 事件处理程序
+事件就是用户或浏览器自身执行的某种动作
+响应某个事件的函数就叫做事件处理程序
+
+13.2.1 html事件处理程序
+<script>
+    function showMessage() {
+        alert("hello world");
+    }
+</script>
+<input type="button" value="click me" onclick="showMessage()" />
+
+13.2.2 DOM0级事件处理程序 : 将一个函数赋值给一个事件处理程序属性
+var btn = document.getElementById("myBtn");
+btn.onclick = function() {
+    alert("Clicked");
+}
+使用DOM0级方法指定的事件处理程序被认为是元素的方法。因此，这时候的事件处理程序是在元素的作用域中运行
+
+13.2.3 DOM2级事件处理程序: 
+用于处理指定和删除事件处理程序的操作
+addEventListener(eventName, handle, boolean)  removeEventListener(eventName, handle, boolean)
+boolean = true  表示在捕获阶段调用事件处理程序
+boolean = false 表示在冒泡阶段调用事件处理程序
+
+ps:
+var btn = document.getElementById("myBtn");
+var handle = function() {
+    alert("click");
+}
+btn.addEventListener("click", handle, false);
+
+通过addEventListener添加的事件处理程序只能使用removeEventListener来移除，移除时传入的参数与添加处理程序时使用的参数相同
+btn.removeEventListener("click", handle, false);
 

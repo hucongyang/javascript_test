@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript">
+        function EventUtil() {
+            var btn = document.getElementById('myBtn');
+            var handle = function(event) {
+                switch (event.type) {
+                    case 'click':
+                        console.log('myBtn');
+                        console.log(event.eventPhase);
+                        break;
+                    case 'mouseover':
+                        event.target.style.backgroundColor = "red";
+                        break;
+                    case 'mouseout':
+                        event.target.style.backgroundColor = "";
+                        break;
+                }
+            };
+            btn.addEventListener('click', handle, false);
+            btn.addEventListener('mouseover', handle, false);
+            btn.addEventListener('mouseout', handle, false);
+
+            var input = document.getElementById('name');
+            input.onfocus = function () {
+                console.log(input.getAttribute('value'));
+            };
+            input.onblur = function () {
+                if (input.getAttribute('value')) return true;
+                input.setAttribute('value', 'some');
+                // console.log(input.setAttribute('value', 'some'));
+            }
+
+        }
+        window.onload = EventUtil;
+    </script>
+</head>
+<body>
+    <div id="message">
+        <input id="input" type="button" value="hh">
+        <button id="myBtn">Button</button>
+        <input type="text" value="input some" id="name" >
+
+    </div>
+</body>
+</html>
