@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        function cancelEvent() {
+            var myDiv = document.getElementById('myDiv');
+
+            var handle = function (event) {
+                switch (event.target.id) {
+                    case 'myBtn':
+                        document.getElementById('myDiv').innerHTML = "Pressing";
+                        break;
+                }
+            };
+            myDiv.addEventListener('click', handle, false);
+            var event = document.createEvent('MouseEvents');
+            event.initMouseEvent("click", true, true, document.defaultView, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+            myDiv.dispatchEvent(event);
+
+        }
+
+        window.onload = cancelEvent;
+    </script>
+</head>
+<body>
+    <div id="myDiv">
+        <input type="button" id="myBtn" value="Click me" >
+    </div>
+</body>
+</html>

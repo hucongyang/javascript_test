@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        function linkEvent() {
+            var link = document.getElementById('myLinks');
+            var handle = function (event) {
+                switch (event.target.id) {
+                    case 'goSomewhere':
+                        location.href = "www.baidu.com";
+                        break;
+                    case 'doSomething':
+                        document.title = "doSomething";
+                        break;
+                    case 'sayHi':
+                        alert('sayHisayHi');
+                        break;
+                }
+            };
+
+            link.addEventListener('click', handle, false);
+        }
+
+        window.onload = linkEvent;
+    </script>
+</head>
+<body>
+    <div>
+        <ul id="myLinks">
+            <li id="goSomewhere">go somewhere</li>
+            <li id="doSomething">do something</li>
+            <li id="sayHi">Say hi</li>
+        </ul>
+    </div>
+</body>
+</html>
