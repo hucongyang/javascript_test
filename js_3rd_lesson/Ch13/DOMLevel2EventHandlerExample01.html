@@ -14,15 +14,38 @@
                         break;
                     case 'mouseover':
                         event.target.style.backgroundColor = "red";
+                        console.log("mouseover relatedTarget");
+                        console.log(event.relatedTarget.tagName);
                         break;
                     case 'mouseout':
                         event.target.style.backgroundColor = "";
+                        console.log("mouseout relatedTarget");
+                        console.log(event.relatedTarget.tagName);
+                        break;
+                    case 'mousedown':
+                        console.log(event.type);
+                        console.log(event.detail);
+                        break;
+                    case 'mouseup':
+                        console.log(event.type);
+                        console.log(event.detail);
+                        break;
+                    case 'keydown':
+                        console.log(event.key);
+                        break;
+                    case 'keypress':
+                        console.log(event.key);
+                        break;
+                    case 'keyup':
+                        console.log(event.key);
                         break;
                 }
             };
             btn.addEventListener('click', handle, false);
             btn.addEventListener('mouseover', handle, false);
             btn.addEventListener('mouseout', handle, false);
+            btn.addEventListener('mousedown', handle, false);
+            btn.addEventListener('mouseup', handle, false);
 
             var input = document.getElementById('name');
             input.onfocus = function () {
@@ -31,8 +54,16 @@
             input.onblur = function () {
                 if (input.getAttribute('value')) return true;
                 input.setAttribute('value', 'some');
-                // console.log(input.setAttribute('value', 'some'));
-            }
+            };
+
+            var mouseEvent = document.getElementById('mouseEvent');
+            mouseEvent.addEventListener('mousedown', handle, false);
+            mouseEvent.addEventListener('mouseup', handle, false);
+
+            var keyEvent = document.getElementById('keyEvent');
+            keyEvent.addEventListener('keydown', handle, false);
+            keyEvent.addEventListener('keypress',handle, false);
+            keyEvent.addEventListener('keyup', handle, false)
 
         }
         window.onload = EventUtil;
@@ -43,6 +74,8 @@
         <input id="input" type="button" value="hh">
         <button id="myBtn">Button</button>
         <input type="text" value="input some" id="name" >
+        <button id="mouseEvent">mouseEvent</button>
+        <button id="keyEvent">keyEvent</button>
 
     </div>
 </body>
