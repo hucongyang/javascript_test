@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="EventUtil.js"></script>
+    <script src="EventOnLoad.js"></script>
+    <script>
+        function changeColor() {
+            var textbox = document.getElementById('txtNumbers');
+
+            // focus yellow change red  blur
+            EventUtil.addHandler(textbox, 'focus', function (event) {
+                event = EventUtil.getEvent(event);
+                var target = EventUtil.getTarget(event);
+                if (target.style.backgroundColor != 'red') {
+                    target.style.backgroundColor = 'yellow';
+                }
+            });
+
+            EventUtil.addHandler(textbox, 'change', function (event) {
+                event = EventUtil.getEvent(event);
+                var target = EventUtil.getTarget(event);
+                if (/[^\d]/.test(target.value)) {
+                    target.style.backgroundColor = 'red';
+                } else {
+                    target.style.backgroundColor = '';
+                }
+            });
+
+            EventUtil.addHandler(textbox, 'blur', function (event) {
+                event = EventUtil.getEvent(event);
+                var target = EventUtil.getTarget(event);
+                if (target.style.backgroundColor != 'red') {
+                    target.style.backgroundColor = '';
+                }
+            });
+
+            var textarea = document.getElementById('textarea');
+            textarea.value = "hello world";
+        }
+
+        EventOnLoad.addOnLoad(changeColor);
+    </script>
+</head>
+<body>
+    <p>The textbox will receive focus as soon as the page loads. You can then start typing.</p>
+    <form method="post" action="javascript:alert('Form submitted!')" id="myForm">
+        <div>
+            <label for="comments">Type numbers:</label><br />
+            <input type="text" id="txtNumbers" name="numbers" value="dddd" />
+            <input type="text" size="10" maxlength="15" id="text" name="numbers" />
+            <textarea rows="5" cols="50" id="textarea">input something</textarea>
+        </div>
+        <input type="submit" value="Submit Form" id="submit-btn" />
+    </form>
+</body>
+</html>

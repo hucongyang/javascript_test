@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <script type="text/javascript" src="EventUtil.js"></script>
+<<<<<<< HEAD
     <script>
         function formEvent() {
             var handle = function (event) {
@@ -19,16 +20,36 @@
         }
 
         window.onload = formEvent;
+=======
+    <script type="text/javascript" src="EventOnLoad.js"></script>
+    <script>
+        function submitEvent() {
+            var form = document.getElementById('myForm');
+            var handle = function (event) {
+                event = EventUtil.getEvent(event);
+                var target = EventUtil.getTarget(event);
+                var btn = target.elements["submit-btn"];
+                btn.disabled = true;
+            };
+            EventUtil.addHandler(form, "submit", handle);
+        }
+
+        EventOnLoad.addOnLoad(submitEvent);
+>>>>>>> 8f7f21e6ff7b9ce52504aa6c8388f360f0760ded
     </script>
 </head>
 <body>
-    <form method="post" id="myForm">
+    <form method="post" id="myForm" action="javascript:alert('Form submitted!')">
         <ul>
             <li><input type="radio" name="color" value="red" >Red</li>
             <li><input type="radio" name="color" value="green" >Green</li>
             <li><input type="radio" name="color" value="blue" >Blue</li>
         </ul>
+<<<<<<< HEAD
         <input type="submit" name="submit-1" value="submit">
+=======
+        <button type="submit" id="submit" name="submit-btn">submit</button>
+>>>>>>> 8f7f21e6ff7b9ce52504aa6c8388f360f0760ded
     </form>
 </body>
 </html>
