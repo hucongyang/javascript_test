@@ -3,8 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script type="text/javascript" src="EventUtil.js"></script>
     <script>
-        var
+        function formEvent() {
+            var handle = function (event) {
+                event = EventUtil.getEvent(event);
+                var target = EventUtil.getTarget(event);
+                console.log(target.elements['submit-1']);
+                var btn = target.elements['submit-1'];
+                btn.value = 'ff';
+                btn.disabled = true;
+            };
+            var form = document.getElementById('myForm');
+            EventUtil.addHandler(form, 'submit', handle)
+        }
+
+        window.onload = formEvent;
     </script>
 </head>
 <body>
@@ -14,6 +28,7 @@
             <li><input type="radio" name="color" value="green" >Green</li>
             <li><input type="radio" name="color" value="blue" >Blue</li>
         </ul>
+        <input type="submit" name="submit-1" value="submit">
     </form>
 </body>
 </html>
