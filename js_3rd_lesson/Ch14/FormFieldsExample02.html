@@ -3,17 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script type="text/javascript" src="EventUtil.js"></script>
+    <script type="text/javascript" src="EventOnLoad.js"></script>
     <script>
-        var
+        function submitEvent() {
+            var form = document.getElementById('myForm');
+            var handle = function (event) {
+                event = EventUtil.getEvent(event);
+                var target = EventUtil.getTarget(event);
+                var btn = target.elements["submit-btn"];
+                btn.disabled = true;
+            };
+            EventUtil.addHandler(form, "submit", handle);
+        }
+
+        EventOnLoad.addOnLoad(submitEvent);
     </script>
 </head>
 <body>
-    <form method="post" id="myForm">
+    <form method="post" id="myForm" action="javascript:alert('Form submitted!')">
         <ul>
             <li><input type="radio" name="color" value="red" >Red</li>
             <li><input type="radio" name="color" value="green" >Green</li>
             <li><input type="radio" name="color" value="blue" >Blue</li>
         </ul>
+        <button type="submit" id="submit" name="submit-btn">submit</button>
     </form>
 </body>
 </html>

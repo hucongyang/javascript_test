@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="EventUtil.js"></script>
+    <script src="EventOnLoad.js"></script>
+    <script>
+        function autoFocus() {
+            var handle = function (event) {
+                event = EventUtil.getEvent(event);
+                var target = EventUtil.getTarget(event);
+                if (target.value.length == target.maxLength) {
+                    var form = target.form;
+                    for (var i = 0, len = form.elements.length; i < len; i++) {
+                        if (form.elements[i] == target) {
+                            if (form.elements[i+1]) {
+                                form.elements[i+1].focus();
+                            }
+                            return;
+                        }
+                    }
+                }
+            };
+
+            var text1 = document.getElementById('text1');
+            var text2 = document.getElementById('text2');
+            var text3 = document.getElementById('text3');
+
+            EventUtil.addHandler(text1, "keyup", handle);
+            EventUtil.addHandler(text2, "keyup", handle);
+            EventUtil.addHandler(text3, "keyup", handle);
+
+        }
+
+        EventOnLoad.addOnLoad(autoFocus);
+    </script>
+</head>
+<body>
+    <form method="post" action="" id="form" name="form">
+        <ol>
+            <li><input type="text" name="tel1" id="text1" size="3" maxlength="3" ></li>
+            <li><input type="text" name="tel2" id="text2" size="3" maxlength="3" ></li>
+            <li><input type="text" name="tel3" id="text3" size="4" maxlength="4" ></li>
+        </ol>
+        <select name="location" id="selLocation">
+            <option value="Sunnyvale, CA">Sunnyvale</option>
+            <option value="Los Angeles, CA">Los Angeles</option>
+            <option value="Mountain View, CA">Mountain View</option>
+            <option value="">China</option>
+            <option>Australia</option>
+        </select>
+    </form>
+</body>
+</html>
