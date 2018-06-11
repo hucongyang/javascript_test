@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="EventUtil.js"></script>
+    <script src="EventOnLoad.js"></script>
+    <script>
+        function select() {
+            var selectbox = document.forms[0].elements['location'];
+            var selectbox1 =document.forms[0].elements['location1'];
+
+            var handle = function (event) {
+                event = EventUtil.getEvent(event);
+                var target = EventUtil.getTarget(event);
+                selectbox1.appendChild(target.options[target.options.selectedIndex]);
+            };
+            EventUtil.addHandler(selectbox, 'change', handle);
+        }
+
+        EventUtil.addHandler(window, 'load', function () {
+            frames['richedit'].document.designMode = 'on';
+        });
+
+        EventOnLoad.addOnLoad(select);
+    </script>
+</head>
+<body>
+    <form method="post" action="javascript:alert('Form submitted!')" id="myForm">
+        <div>
+            <label for="selLocation">Where do you want to live?</label>
+            <select name="location" id="selLocation">
+                <option value="Sunnyvale, CA">Sunnyvale</option>
+                <option value="Los Angeles, CA">Los Angeles</option>
+                <option value="Mountain View, CA">Mountain View</option>
+                <option value="">China</option>
+                <option>Australia</option>
+            </select>
+        </div>
+        <div>
+            <label for="selLocation">Where do you want to live?</label>
+            <select name="location1" id="selLocation1">
+
+            </select>
+        </div>
+        <div>
+            <input type="button" value="Select first option" id="btnFirst" />
+            <input type="button" value="Select second option" id="btnSecond" />
+            <input type="button" value="Get selected option" id="btnSelected" />
+        </div>
+        <div class="editable" id="richedit" contenteditable="true"></div>
+        <iframe name="richedit" style="height: 500px;width: 500px;" src=""></iframe>
+    </form>
+</body>
+</html>

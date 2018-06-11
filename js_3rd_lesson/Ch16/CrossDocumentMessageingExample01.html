@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="./EventUtil.js"></script>
+    <script type="text/javascript" src="./EventOnLoad.js"></script>
+    <script>
+        function toFrame() {
+            var input = document.getElementById('input');
+            var btn = document.getElementById('btn');
+            var handle = function (event) {
+                var frameContent = document.getElementById('frame').contentWindow;
+                if (frameContent.postMessage) {
+                    frameContent.postMessage(input.value, '*');
+                } else {
+                    alert("frameContent.postMessage error");
+                }
+            };
+
+            EventUtil.addHandler(btn, 'click', handle);
+        }
+
+        EventUtil.addHandler(window, 'message', function (event) {
+            var status = document.getElementById('status');
+            status.innerText = event.data;
+        });
+
+        EventOnLoad.addOnLoad(toFrame);
+    </script>
+</head>
+<body>
+    <div id="status"></div>
+    <div>
+        <input id="input" type="text" size="40" >
+        <input id="btn" type="button" value="send to frame" >
+    </div>
+    <iframe id="frame" style="width: 500px; height: 200px" src="CrossDocumentMessagingExample01Inner.html"></iframe>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./EventUtil.js"></script>
+    <script src="./EventOnLoad.js"></script>
+    <script>
+        var handle = function(event) {
+            var status = document.getElementById('status');
+            status.innerText = "parent: " + event.data;
+        };
+        EventUtil.addHandler(window, 'message', handle);
+
+        function toParent() {
+            var btn = document.getElementById('btn');
+            var handle = function (event) {
+                var message = document.getElementById('input').value;
+                if (parent.postMessage) {
+                    parent.postMessage(message, '*');
+                } else {
+                    alert('parent postmessage error');
+                }
+            };
+
+            EventUtil.addHandler(btn, 'click', handle);
+        }
+        EventOnLoad.addOnLoad(toParent);
+    </script>
+</head>
+<body>
+    <div id="status"></div>
+    <div>
+        <input id="input" type="text" size="40" >
+        <input id="btn" type="button" value="send to parent">
+    </div>
+</body>
+</html>

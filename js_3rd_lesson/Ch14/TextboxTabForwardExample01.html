@@ -6,14 +6,15 @@
     <script src="EventUtil.js"></script>
     <script src="EventOnLoad.js"></script>
     <script>
-        function autoFocus() {
+        function tabForward() {
+            var form = document.getElementById("form");
             var handle = function (event) {
                 event = EventUtil.getEvent(event);
                 var target = EventUtil.getTarget(event);
                 if (target.value.length == target.maxLength) {
-                    var form = target.form;
+                    // debugger;
                     for (var i = 0, len = form.elements.length; i < len; i++) {
-                        if (form.elements[i] == target) {
+                        if (target == form.elements[i]) {
                             if (form.elements[i+1]) {
                                 form.elements[i+1].focus();
                             }
@@ -23,33 +24,25 @@
                 }
             };
 
-            var text1 = document.getElementById('text1');
-            var text2 = document.getElementById('text2');
-            var text3 = document.getElementById('text3');
+            var test1 = document.getElementById("test1");
+            var test2 = document.getElementById("test2");
+            var test3 = document.getElementById("test3");
 
-            EventUtil.addHandler(text1, "keyup", handle);
-            EventUtil.addHandler(text2, "keyup", handle);
-            EventUtil.addHandler(text3, "keyup", handle);
-
+            EventUtil.addHandler(test1, 'keyup', handle);
+            EventUtil.addHandler(test2, 'keyup', handle);
+            EventUtil.addHandler(test3, 'keyup', handle);
         }
 
-        EventOnLoad.addOnLoad(autoFocus);
+        EventOnLoad.addOnLoad(tabForward);
     </script>
 </head>
 <body>
-    <form method="post" action="" id="form" name="form">
-        <ol>
-            <li><input type="text" name="tel1" id="text1" size="3" maxlength="3" ></li>
-            <li><input type="text" name="tel2" id="text2" size="3" maxlength="3" ></li>
-            <li><input type="text" name="tel3" id="text3" size="4" maxlength="4" ></li>
-        </ol>
-        <select name="location" id="selLocation">
-            <option value="Sunnyvale, CA">Sunnyvale</option>
-            <option value="Los Angeles, CA">Los Angeles</option>
-            <option value="Mountain View, CA">Mountain View</option>
-            <option value="">China</option>
-            <option>Australia</option>
-        </select>
+    <form method="post" action="javascript:alert('fff')" id="form">
+        <div>
+            <li><input id="test1" name="test1" size="3" maxlength="3" ></li>
+            <li><input id="test2" name="test3" size="3" maxlength="3" ></li>
+            <li><input id="test3" name="test4" size="4" maxlength="4" ></li>
+        </div>
     </form>
 </body>
 </html>
