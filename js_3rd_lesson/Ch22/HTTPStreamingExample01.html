@@ -2,9 +2,38 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
+    <script>
+        function createStreamingClient(url, process, finished) {
+            var xhr = new XMLHttpRxequest();
+            var received = 0;
+
+            xhr.open('get', url, true);
+            xhr.onreadystatechange = function (ev) {
+                var result;
+
+                if (xhr.readyState == 3) {
+                    result = xhr.responseText.substring(received);
+                    received += result.length;
+
+                    process(result);
+                } else if (xhr.readyState == 4) {
+                    finished(xhr.responseText);
+                }
+            };
+            xhr.send(null);
+            return xhr;
+        }
+
+        var message = document.getElementById('message');
+        var client = createStreamingClient("http://statistics.saas.local/test/test2", function (data) {
+            console.log("process data: " + data);
+        }, function (data) {
+            console.log("finished data: " + data);
+        });
+    </script>
 </head>
 <body>
-$END$
+    <div id="message">ddd</div>
 </body>
 </html>

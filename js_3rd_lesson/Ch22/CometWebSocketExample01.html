@@ -2,9 +2,41 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
+    <script>
+        var socket = new WebSocket("ws://statistics.saas.local/test/web/socket");
+        var message = {
+            time: new Date(),
+            text: "hello world",
+            clientId: "shhsdbs"
+        };
+
+        // Web Socket对象还有其他三个事件，在连接生命周期的不同阶段触发。
+        // open 在成功建立连接时触发
+        socket.onopen = function (event) {
+            console.log("open: " + event.type);
+        };
+
+        // error 在发生错误时触发，连接不能持续
+        socket.onerror = function (event) {
+            console.log("error: " + event.type);
+        };
+
+        // close 在连接关闭时触发
+        socket.onclose = function (event) {
+            console.log("close: " + event.type);
+            console.log("was clean? " + event.wasClean + " Code=" + event.code + " Reason=" + event.reason);
+        };
+
+        // 在这三个事件中，只有close事件的event对象有额外的信息。这个事件的事件对象有三个额外的属性：
+        // wasClean, code, reason。其中，wasClean是一个布尔值，表示连接是否已经明确地关闭；
+        // code 是服务器返回的数值状态码；而reason是一个字符串，包含服务器发回的消息。
+
+
+        console.log(socket);
+    </script>
 </head>
 <body>
-$END$
+    <div id="message"></div>
 </body>
 </html>

@@ -2,9 +2,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
+    <script>
+        function sseApi() {
+            var source = new EventSource('http://statistics.saas.local/test/sse');
+            console.log(source.readyState);
+            source.onmessage = function (event) {
+                var data = event.data;
+                document.getElementById('message').innerHTML += event.data + "<br />";
+                console.log(source);
+                console.log(event);
+                source.close();
+            };
+        }
+
+        window.onload = sseApi;
+    </script>
 </head>
 <body>
-$END$
+    <div id="message"></div>
 </body>
 </html>
