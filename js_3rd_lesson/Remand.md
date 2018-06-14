@@ -446,3 +446,20 @@ function throttle(method, context) {
         method.call(context);
     }, 100);
 }
+
+function resizeDiv() {
+    var div = document.getElementById("myDiv");
+    div.style.height = div.offsetWidth + "px";
+}
+
+window.onresize = function() {
+    throttle(resizeDiv);
+};
+只要代码是周期性执行的，都应该使用节流，但是你不能控制请求执行的速率。
+这里展示的throttle()函数用了100ms作为间隔，你当然可以根据你的需要来修改它。
+
+22.4 自定义事件
+
+22.5 拖放
+注意为了元素能被拖放，它必须是绝对定位的。
+22.5.1 修缮拖放功能

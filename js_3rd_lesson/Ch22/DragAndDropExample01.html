@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="EventUtil.js"></script>
+    <script src="EventOnLoad.js"></script>
+    <script>
+        EventUtil.addHandler(document, 'mousemove', function (event) {
+            var myDiv = document.getElementById('myDiv');
+            myDiv.style.left = event.clientX + 'px';
+            myDiv.style.top = event.clientY + 'px';
+        })
+    </script>
+</head>
+<body>
+    <div id="myDiv" style="width: 100px;height: 100px;position: absolute;background-color: lime"></div>
+</body>
+</html>
