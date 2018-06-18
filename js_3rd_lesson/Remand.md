@@ -447,6 +447,7 @@ function throttle(method, context) {
     }, 100);
 }
 
+<<<<<<< HEAD
 function resizeDiv() {
     var div = document.getElementById("myDiv");
     div.style.height = div.offsetWidth + "px";
@@ -463,3 +464,76 @@ window.onresize = function() {
 22.5 拖放
 注意为了元素能被拖放，它必须是绝对定位的。
 22.5.1 修缮拖放功能
+
+24. 最佳实践
+24.1.4 编程实践
+1. 尊重对象所有权
+简单的讲，如果你不负责创建或维护某个对象，它的对象或者它的方法，那么你就不能对它们进行修改。更具体地说：
+不要为实例或原型添加属性
+不要为实例或原型添加方法
+不要重定义已存在的方法
+
+2.避免全局量
+可以如下例子所示楷书创建命名空间来组合功能。
+
+    // 创建全局对象
+    var Wrox = {};
+    // 为Professional JavaScript创建命名空间
+    Wrox.ProJS = {};
+    // 将书中用到的对象附加上去
+    Wrox.ProJS.EventUtil = {};
+    Wrox.ProJS.CookieUtil = {};
+    
+    // 在这个例子中，Wrox是全局量，其他命名空间在此之上创建。如果本书所有代码都放在Wrox.ProJS命名空间，
+    // 那么其他作者也应把自己的代码添加到Wrox对象中。只要所有人都遵循这个原则，那么就不用担心其他人也创建
+    // 叫做EventUtil或者CookieUtil的对象，因为它会存在于不用的命名空间中。请看一下例子：
+    
+    // 为Professional Ajax创建命名空间
+    Wrox.ProAjax = {};
+    
+    // 附加该书中所使用的其他对象
+    Wrox.ProAjax.EventUtil = {};
+    Wrox.ProAjax.CookieUtil = {};
+    
+    // ProJS还可以继续分别访问
+    Wrox.ProJS.EventUtil.addHandler();
+    // 以及ProAjax
+    Wrox.ProAjax.EventUtil.addHandler();
+    
+3. 避免与null进行比较
+如果看到了与null比较的代码，尝试使用一下技术替换：
+如果值应为一个引用类型，使用instanceof操作符检查其构造函数
+如果值应为一个基本类型，使用typeof检查其类型
+如果是希望对象包含某个特定的方法名，则使用typeof操作符确保指定名字的方法存在于对象上。
+
+4. 使用常量
+var Constants = {
+    INVALID_VALUE_MSG: "Invalid value!",
+    INVALID_VALUE_URL: "/errors/invalid.php"
+};
+
+function validate(value) {
+    if(value) {
+        alert(Constants.INVALID_VALUE_MSG);
+        location.href = Constants
+    }
+}
+关键在于将数据和使用它的逻辑进行分离。要注意的值的类型如下所示。
+重复值：任何在多处用到的值都应抽取为一个常量。
+用户界面字符串：任何用于显示给用户的字符串，都应被抽取出来以方便国际化
+URLs: 在web应用中，资源位置很容易变更，所以推荐用一个公共地方存放所有的URL
+任意可能会更改的值
+
+24.2.1 注意作用域
+1. 避免全局查找
+通过创建一个指向document对象的局部变量，就可以通过限制一次全局查找来改进这个函数的性能
+function updateUI() {
+    var doc = document;
+    var imgs = doc.getElementById("img");
+    for (var i = 0, len = imgs.length; i < len; i++) {
+        imgs[i].title = doc.title + " image " + i;
+    }
+    
+    var msg = doc.getElementById("msg");
+    msg.innerHTML = "Update complete";
+}
